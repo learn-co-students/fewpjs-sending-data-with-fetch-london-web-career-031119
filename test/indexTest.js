@@ -28,7 +28,7 @@ describe( "submitData()", () => {
         reqBody = requestBody
         headers = this.req.headers
         return {
-          id: rando,
+          id: 1,
           ...requestBody
         }
       } );
@@ -58,7 +58,7 @@ describe( "submitData()", () => {
       .post( '/users' )
       .reply( 201, function ( uri, requestBody ) {
         return {
-          id: rando,
+          id: 1,
           ...requestBody
         }
       } );
@@ -69,16 +69,15 @@ describe( "submitData()", () => {
     await submitData( name, email )
 
     expect( document.body.innerHTML )
-      .to.include( rando )
+      .to.include('1')
   } );
 
   it( "handles a failed POST request using catch, appends the error message to the DOM", async function () {
-    let message = 'Unauthorized Access'
+    let message = '1'
     nock( 'http://localhost:3000' )
       .post( '/users' )
       .replyWithError( {
         message: message,
-        code: '401',
       } )
 
     let name = "Jim"

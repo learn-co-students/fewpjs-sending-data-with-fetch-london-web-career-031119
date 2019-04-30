@@ -11,8 +11,7 @@ const submitData = (name, email) => {
          'Content-Type': 'application/json',
          'Accept': 'application/json' },
       body: JSON.stringify(data)
-   }).then( r => r.json()).then( (obj) =>  document.body.innerHTML = obj[ "id" ])
-    .catch( (error) => document.body.innerHTML = error.message)
+   }).then( r => r.json()).then( (obj) =>  document.body.innerHTML = obj[ "id" ]).catch( (error) => document.body.innerHTML = error.message)
 
 }
 const showUser = (user) => {
